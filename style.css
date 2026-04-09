@@ -1,0 +1,413 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body,
+html {
+    height: 100%;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    color: white;
+}
+
+body {
+    /* Use the exact image URL */
+    background-image: url('Images/bg1.jpg');
+
+    /* Cover the entire page */
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+/* nav bar css starts*/
+.navbar-custom {
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+    /* border: 1px solid #475569; */
+    /* border-radius: 9999px; */
+    color: white;
+    position: relative;
+    font-size: 0.875rem;
+}
+
+.containers {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 100px;
+    padding-left: 80px;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+}
+
+.nav-items {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-left: 10rem;
+}
+
+.nav-link-custom {
+    position: relative;
+    overflow: hidden;
+    height: 1.5rem;
+    color: #fff;
+    text-decoration: none;
+}
+
+.nav-link-custom span {
+    display: block;
+    transition: transform 0.3s ease;
+    /* left: 0; */
+    z-index: 1;
+}
+
+.nav-link-custom .hover-text {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    color: #fff;
+}
+
+.nav-link-custom:hover .original-text {
+    transform: translateY(-100%);
+}
+
+.nav-link-custom:hover .hover-text {
+    transform: translateY(-100%);
+}
+
+.btn-wrapper {
+    display: flex;
+    align-items: center;
+    margin-left: 2rem;
+}
+
+/* Background layer */
+/* .nav-link-custom::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -100%;
+    width: 100%;
+    height: 100%;
+    background-color: #272626;
+    
+    z-index: 0;
+    transition: bottom 0.2s ease 0.3s;
+} */
+ /* 👇 Delay added here */
+
+/* Background moves after 1 second */
+.nav-link-custom:hover::before {
+    bottom: 0;
+}
+
+.contact-btn {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    width: 130px;
+    height: 40px;
+    gap: 1.5rem;
+    line-height: 40px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    padding: 13px 18px;
+    text-align: center;
+    font-size: 0.939rem;
+    font-weight: 500;
+    color: rgb(51, 51, 51);
+    font-family: system-ui, sans-serif;
+    background: linear-gradient(135deg, #ff6a4d, #ff4b2b);
+}
+
+/* Background layer */
+.contact-btn::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -100%;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    /* 👇 Delay added here */
+    transition: bottom 0.2s ease 0.3s;
+    z-index: 0;
+}
+
+/* Text */
+.contact-btn span {
+    /* display: block; */
+    position: absolute;
+    transition: transform 0.3s ease;
+    width: 100%;
+    left: 0;
+    z-index: 1;
+}
+
+.contact-btn .original-text {
+    top: 0;
+}
+
+.contact-btn .hover-text {
+    color: #000;
+    position: absolute;
+    top: 100%;
+    left: 0;
+}
+
+.contact-btn:hover .original-text {
+    transform: translateY(-100%);
+}
+
+.contact-btn:hover .hover-text {
+    transform: translateY(-100%);
+}
+
+/* Background moves after 1 second */
+.contact-btn:hover::before {
+    bottom: 0;
+}
+
+/* nav bar css ends*/
+
+
+/* --------------------------------------------------------------------------------------------- */
+
+.mobile-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.993);
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 0;
+    z-index: 999;
+}
+
+.mobile-menu a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.mobile-menu a:hover {
+    color: #4f46e5;
+    /* Equivalent to hover:text-indigo-600 */
+}
+
+.menu-toggle {
+    position: absolute;
+    top: 10;
+    right: 10px;
+    display: none;
+    background: none;
+    border: none;
+    color: #6b7280;
+    /* Equivalent to text-gray-600 */
+}
+
+/* Responsive styles */
+@media (max-width: 767px) {
+
+    .nav-links,
+    .nav-buttons {
+        display: none;
+    }
+
+    .navbar-custom {
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .mobile-menu.show {
+        display: flex;
+    }
+}
+
+/* -------------------------------------------------------------------------------------------- */
+
+/* HERO SECTION */
+.header {
+    height: 100vh;
+    background: url('/Simple/Images/bg1.jpg') center/cover no-repeat;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+/* Dark overlay */
+.overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.65);
+}
+
+/* Content above overlay */
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+/* TEXT */
+.text-logo {
+    font-size: 3rem;
+    /* letter-spacing: 3px; */
+    font-style: italic;
+    color: #ff6a4d;
+    font-family: system-ui;
+    margin-bottom: 5px;
+    transition: 0.5s;
+}
+
+.text-logo:hover {
+    -webkit-text-stroke: 2px #fc5b5b;
+    color: transparent;
+    font-weight: 600;
+    font-size: 4rem;
+}
+
+.title {
+    font-size: 2.5rem;
+    line-height: 1.3;
+    font-style: italic;
+    font-family: system-ui;
+    transition: 0.5s;
+}
+
+.title:hover {
+    -webkit-text-stroke: 2px #fff;
+    color: transparent;
+    font-weight: 600;
+    font-size: 3rem;
+}
+
+/* LOGOS */
+/* .group-logo {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+} */
+
+.group-logo img {
+    width: 60px;
+    transition: transform 0.4s ease;
+    filter: drop-shadow(0 0 8px rgba(255,255,255,0.4));
+}
+
+/* Hover animation */
+.group-logo img:hover {
+    transform: translateY(-10px) scale(1.1);
+}
+
+/* ===================== */
+/* ✨ ANIMATIONS */
+/* ===================== */
+
+/* Fade Up */
+.fade-up {
+    opacity: 0;
+    transform: translateY(40px);
+    animation: fadeUp 1s ease forwards;
+}
+
+.delay-1 {
+    animation-delay: 0.3s;
+}
+
+.delay-2 {
+    animation-delay: 0.6s;
+}
+
+@keyframes fadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Scale animation */
+.fade-scale {
+    opacity: 0;
+    transform: scale(0.8);
+    animation: scaleIn 1s ease forwards;
+    animation-delay: 0.5s;
+}
+
+@keyframes scaleIn {
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* -------------- */
+.group-logo {
+    position: relative;
+    width: 250px;
+    height: 250px;
+    margin: auto;
+}
+
+/* Center logo */
+.group-logo img:nth-child(1) {
+    position: absolute;
+    width: 70px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Orbiting logos */
+.group-logo img:nth-child(2),
+.group-logo img:nth-child(3),
+.group-logo img:nth-child(4) {
+    position: absolute;
+    width: 60px;
+    top: 50%;
+    left: 50%;
+    transform-origin: 0 -100px;
+    animation: rotateOrbit 8s linear infinite;
+    
+}
+
+/* Different positions */
+.group-logo img:nth-child(2) {
+    animation-delay: 0s;
+}
+
+.group-logo img:nth-child(3) {
+    animation-delay: -2.5s;
+}
+
+.group-logo img:nth-child(4) {
+    animation-delay: -5s;
+}
+
+/* Rotation animation */
+@keyframes rotateOrbit {
+    from {
+        transform: rotate(0deg) translateY(-100px) rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg) translateY(-100px) rotate(-360deg);
+    }
+}
