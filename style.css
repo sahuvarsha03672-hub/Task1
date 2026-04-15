@@ -13,26 +13,27 @@ html {
 }
 
 body {
-    /* Use the exact image URL */
-    background-image: url('Images/bg1.jpg');
-
-    /* Cover the entire page */
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+    background-color: #0f1115;
+    /* Clean modern dark background for page content */
 }
 
 /* nav bar css starts*/
 .navbar-custom {
     display: flex;
     align-items: center;
-    margin-top: 5px;
-    /* border: 1px solid #475569; */
-    /* border-radius: 9999px; */
     color: white;
-    position: relative;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 15px 0;
+    background: rgba(10, 10, 12, 0.3);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     font-size: 0.875rem;
+    transition: all 0.3s ease;
 }
 
 .containers {
@@ -104,7 +105,7 @@ body {
     z-index: 0;
     transition: bottom 0.2s ease 0.3s;
 } */
- /* 👇 Delay added here */
+/* 👇 Delay added here */
 
 /* Background moves after 1 second */
 .nav-link-custom:hover::before {
@@ -112,7 +113,8 @@ body {
 }
 
 .contact-btn {
-    display: flex;
+    display: inline-flex;
+    justify-content: center;
     align-items: center;
     text-decoration: none;
     width: 130px;
@@ -179,6 +181,61 @@ body {
     bottom: 0;
 }
 
+/* Dropdown Menu Styles */
+.nav-item-dropdown {
+    position: relative;
+}
+
+.nav-item-dropdown::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 20px;
+    top: 100%;
+    left: 0;
+}
+
+.nav-item-dropdown .dropdown-content {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    top: calc(100% + 15px);
+    left: 50%;
+    transform: translateX(-50%) translateY(-10px);
+    min-width: 220px;
+    background-color: rgba(10, 10, 12, 0.95);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 10px 0;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.nav-item-dropdown:hover .dropdown-content {
+    visibility: visible;
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+.nav-item-dropdown .dropdown-content a {
+    color: #ccc;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: background 0.3s ease, color 0.3s ease;
+    text-align: center;
+}
+
+.nav-item-dropdown .dropdown-content a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #ff6a4d;
+}
+
 /* nav bar css ends*/
 
 
@@ -189,13 +246,74 @@ body {
     top: 100%;
     left: 0;
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.993);
-    display: none;
+    background-color: rgba(10, 10, 12, 0.488);
+    backdrop-filter: blur(12px);
+    display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1rem;
-    padding: 1rem 0;
+    gap: 1.5rem;
+    padding: 0;
     z-index: 999;
+
+    /* Animation base state */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-20px);
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.mobile-menu.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    padding: 2rem 0;
+}
+
+.mobile-menu>* {
+    opacity: 0;
+    transform: translateY(-15px);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    transition-delay: 0s;
+}
+
+.mobile-menu.show>* {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.mobile-menu.show>*:nth-child(1) {
+    transition-delay: 0.1s;
+}
+
+.mobile-menu.show>*:nth-child(2) {
+    transition-delay: 0.15s;
+}
+
+.mobile-menu.show>*:nth-child(3) {
+    transition-delay: 0.2s;
+}
+
+.mobile-menu.show>*:nth-child(4) {
+    transition-delay: 0.25s;
+}
+
+.mobile-menu.show>*:nth-child(5) {
+    transition-delay: 0.3s;
+}
+
+.mobile-menu.show>*:nth-child(6) {
+    transition-delay: 0.35s;
+}
+
+.mobile-menu.show>*:nth-child(7) {
+    transition-delay: 0.4s;
+}
+
+.mobile-menu.show>*:nth-child(8) {
+    transition-delay: 0.45s;
 }
 
 .mobile-menu a {
@@ -210,18 +328,26 @@ body {
 }
 
 .menu-toggle {
-    position: absolute;
-    top: 10;
-    right: 10px;
     display: none;
     background: none;
     border: none;
-    color: #6b7280;
-    /* Equivalent to text-gray-600 */
+    color: #fff;
+    cursor: pointer;
 }
 
 /* Responsive styles */
-@media (max-width: 767px) {
+@media (max-width: 1200px) {
+    .nav-items {
+        margin-left: 2rem;
+    }
+
+    .containers {
+        gap: 40px;
+        padding-left: 40px;
+    }
+}
+
+@media (max-width: 992px) {
 
     .nav-links,
     .nav-buttons {
@@ -229,16 +355,108 @@ body {
     }
 
     .navbar-custom {
-        justify-content: space-between;
         width: 100%;
+    }
+
+    .containers {
+        width: 100%;
+        justify-content: space-between;
+        padding: 0 20px;
     }
 
     .menu-toggle {
         display: block;
     }
+    
+    .header {
+        padding-top: 80px;
+    }
 
-    .mobile-menu.show {
+    .mobile-menu .nav-item-dropdown {
+        width: 100%;
         display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .mobile-menu .nav-item-dropdown::after {
+        display: none;
+    }
+
+    .mobile-menu .nav-item-dropdown .dropdown-content {
+        position: static;
+        visibility: visible;
+        opacity: 1;
+        transform: none;
+        box-shadow: none;
+        background: transparent;
+        border: none;
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+        padding: 0;
+        margin-top: 10px;
+        min-width: 100%;
+        display: none;
+        transition: none;
+    }
+
+    .mobile-menu .nav-item-dropdown:hover .dropdown-content {
+        display: flex;
+        transform: none;
+    }
+
+    .mobile-menu .dropdown-content a {
+        text-align: center;
+        padding: 8px 20px;
+        color: #aaa;
+    }
+}
+
+@media (max-width: 767px) {
+    .text-logo {
+        font-size: 2.5rem;
+    }
+
+    .text-logo:hover {
+        font-size: 3rem;
+        -webkit-text-stroke: 1px #fc5b5b;
+    }
+
+    .title {
+        font-size: 1.8rem;
+    }
+
+    .title:hover {
+        font-size: 2.2rem;
+        -webkit-text-stroke: 1px #fff;
+    }
+
+    .group-logo {
+        margin-top: 50px;
+        transform: scale(0.8);
+    }
+}
+
+@media (max-width: 480px) {
+    .text-logo {
+        font-size: 2rem;
+    }
+
+    .text-logo:hover {
+        font-size: 2.5rem;
+    }
+
+    .title {
+        font-size: 1.5rem;
+    }
+
+    .title:hover {
+        font-size: 1.8rem;
+    }
+
+    .group-logo {
+        margin-top: 60px;
+        transform: scale(0.6);
     }
 }
 
@@ -247,7 +465,12 @@ body {
 /* HERO SECTION */
 .header {
     height: 100vh;
-    background: url('/Simple/Images/bg1.jpg') center/cover no-repeat;
+    background-image: url('Images/bg1.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    /* Keep parallax effect for the hero */
     position: relative;
     display: flex;
     align-items: center;
@@ -308,14 +531,7 @@ body {
 } */
 
 .group-logo img {
-    width: 60px;
-    transition: transform 0.4s ease;
-    filter: drop-shadow(0 0 8px rgba(255,255,255,0.4));
-}
-
-/* Hover animation */
-.group-logo img:hover {
-    transform: translateY(-10px) scale(1.1);
+    transition: filter 0.4s ease, transform 0.4s ease;
 }
 
 /* ===================== */
@@ -362,52 +578,107 @@ body {
 /* -------------- */
 .group-logo {
     position: relative;
-    width: 250px;
-    height: 250px;
+    width: 320px;
+    height: 320px;
     margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Orbit Path (Dashed Circle) - Added for modern look */
+.group-logo::before {
+    content: "";
+    position: absolute;
+    width: 260px;
+    /* Orbit radius 130px * 2 */
+    height: 260px;
+    border: 1px dashed rgba(255, 255, 255, 0.25);
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: spinPath 20s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes spinPath {
+    100% {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
 }
 
 /* Center logo */
 .group-logo img:nth-child(1) {
     position: absolute;
-    width: 70px;
+    width: 80px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    z-index: 10;
+    filter: drop-shadow(0 0 15px rgba(255, 106, 77, 0.4));
+}
+
+.group-logo img:nth-child(1):hover {
+    filter: drop-shadow(0 0 25px rgba(255, 106, 77, 0.8));
+    transform: translate(-50%, -50%) scale(1.1);
+    cursor: pointer;
 }
 
 /* Orbiting logos */
-.group-logo img:nth-child(2),
-.group-logo img:nth-child(3),
-.group-logo img:nth-child(4) {
+.group-logo img:not(:nth-child(1)) {
     position: absolute;
-    width: 60px;
+    width: 55px;
+    height: 55px;
     top: 50%;
     left: 50%;
-    transform-origin: 0 -100px;
-    animation: rotateOrbit 8s linear infinite;
-    
+    margin-top: -27.5px;
+    margin-left: -27.5px;
+    animation: rotateOrbit 12s linear infinite;
+    z-index: 5;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+    padding: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    object-fit: contain;
 }
 
-/* Different positions */
+/* Removed hover effect for orbiting logos as requested */
+
+/* Different positions perfectly spaced for 6 items in 12s */
 .group-logo img:nth-child(2) {
     animation-delay: 0s;
 }
 
 .group-logo img:nth-child(3) {
-    animation-delay: -2.5s;
+    animation-delay: -2s;
 }
 
 .group-logo img:nth-child(4) {
-    animation-delay: -5s;
+    animation-delay: -4s;
 }
 
-/* Rotation animation */
+.group-logo img:nth-child(5) {
+    animation-delay: -6s;
+}
+
+.group-logo img:nth-child(6) {
+    animation-delay: -8s;
+}
+
+.group-logo img:nth-child(7) {
+    animation-delay: -10s;
+}
+
+/* Rotation animation with dual-rotate to keep elements upright */
 @keyframes rotateOrbit {
     from {
-        transform: rotate(0deg) translateY(-100px) rotate(0deg);
+        transform: rotate(0deg) translateY(-130px) rotate(0deg);
     }
+
     to {
-        transform: rotate(360deg) translateY(-100px) rotate(-360deg);
+        transform: rotate(360deg) translateY(-130px) rotate(-360deg);
     }
 }
