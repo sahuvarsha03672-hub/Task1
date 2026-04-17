@@ -1,7 +1,8 @@
 //  --------------------- Create floating particles starts here ----------------------
 function createParticles() {
     const particlesContainer = document.getElementById('particles');
-    const particleCount = 50;
+    // const particleCount = 50;
+    const particleCount = window.innerWidth < 768 ? 25 : 50;
 
     for (let i = 0; i < particleCount; i++) {
         const particle = document.createElement('div');
@@ -18,58 +19,6 @@ createParticles();
 //  --------------------- Create floating particles ends here ----------------------
 
 
-// ----------------------- Filter functionality starts here -------------------------
-const filterButtons = document.querySelectorAll('.filter-btn');
-const projectCards = document.querySelectorAll('.slide');
-
-filterButtons.forEach(button => {
-    button.addEventListener('click', function () {
-        // Update active button
-        filterButtons.forEach(btn => btn.classList.remove('active'));
-        this.classList.add('active');
-
-        const filter = this.getAttribute('data-filter');
-
-        // Filter projects
-        projectCards.forEach(card => {
-            if (filter === 'all') {
-                card.style.display = 'block';
-                // Reset animation
-                card.style.animation = 'none';
-                setTimeout(() => {
-                    card.style.animation = '';
-                }, 10);
-            } else {
-                const categories = card.getAttribute('data-category').split(' ');
-                if (categories.includes(filter)) {
-                    card.style.display = 'block';
-                    // Reset animation
-                    card.style.animation = 'none';
-                    setTimeout(() => {
-                        card.style.animation = '';
-                    }, 10);
-                } else {
-                    card.style.display = 'none';
-                }
-            }
-        });
-
-        // projectCards.forEach(card => {
-        //     const categories = card.getAttribute('data-category') || "";
-
-        //     if (filter === 'all' || categories.includes(filter)) {
-        //         card.style.display = 'flex';
-        //     } else {
-        //         card.style.display = 'none';
-        //     }
-        // });
-        
-    });
-});
-
-// ----------------------- Filter functionality ends here -------------------------
-
-
 // ----------------------- Main functionality starts here -------------------------
 document.addEventListener('DOMContentLoaded', () => {
     // -------- Elements --------
@@ -83,9 +32,8 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentIndex = 0;
     const slideCount = slides.length;
     const autoPlayDelay = 5000;  // 5 seconds
-    let isAutoPlaying = true;
     let autoPlayTimer;
-    let progressTimer;
+    let isAutoPlaying = true;
 
     // ---- Initialization ----
 

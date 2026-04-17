@@ -7,9 +7,9 @@
 
 /* CSS Variables & Reset */
 :root {
-    --primary-color: #f6763b;
+    --primary-color: linear-gradient(135deg, #d86a48 0%, #ec3030 100%);
     --text-color: #ffffff;
-    --bg-color: #12161f;
+    --bg-color: #0c0c0c;
     --glass-bg: rgba(255, 255, 255, 0.1);
     --glass-border: rgba(255, 255, 255, 0.2);
     --transition-speed: 0.6s;
@@ -77,9 +77,6 @@ body {
 
 
 /* ----------------------- Floating particles starts here ----------------------- */
-
-
-/* ----------------------- Floating particles ends here ----------------------- */
 .particles {
     position: fixed;
     top: 0;
@@ -120,6 +117,8 @@ body {
     }
 }
 
+/* ----------------------- Floating particles ends here ----------------------- */
+
 
 /* ----------------------- Header section starts here ----------------------- */
 header {
@@ -132,12 +131,29 @@ h1 {
     font-size: 3.5rem;
     font-weight: 700;
     margin-bottom: 15px;
-    background: linear-gradient(90deg, #ff9a56, #ff6a88, #ff99ac);
+    background: linear-gradient(135deg, #ac6240 0%, #eb5744 50%, #da5353 75%, #be5e6e 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     position: relative;
     display: inline-block;
-    text-shadow: 0 0 20px rgba(255, 154, 86, 0.3);
+    animation: gradient-shift 3s ease infinite;
+    background-size: 200% 200%;
+    will-change: background-position;
+    text-shadow: 0 0 30px rgba(255, 154, 86, 0.452);
+}
+
+@keyframes gradient-shift {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 .subtitle {
@@ -147,36 +163,6 @@ h1 {
     margin: 0 auto 40px;
 }
 
-/* Filter buttons */
-.filter-container {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 15px;
-    margin-bottom: 40px;
-}
-
-.filter-btn {
-    padding: 10px 25px;
-    background: rgba(255, 255, 255, 0.514);
-    border: 1px solid rgba(19, 18, 18, 0.651);
-    border-radius: 30px;
-    color: #000;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-size: 0.9rem;
-    font-weight: 500;
-}
-
-.filter-btn:hover {
-    background: rgba(190, 189, 189, 0.664);
-    transform: translateY(-3px);
-}
-
-.filter-btn.active {
-    background: linear-gradient(90deg, #ff9a56, #ff6a88);
-    border-color: transparent;
-}
 
 /* ----------------------- Header section ends here ----------------------- */
 
@@ -248,7 +234,7 @@ main {
     flex-direction: column;
     justify-content: center;
 
-    background: rgba(15, 23, 42, 0.7);
+    background: rgba(17, 17, 17, 0.7);
     /* glass effect */
     backdrop-filter: blur(10px);
 
@@ -280,6 +266,7 @@ main {
     margin-bottom: 30px;
     font-size: 1.1rem;
     opacity: 0;
+    color: rgb(201, 199, 199);
     transform: translateX(-30px);
     animation: slideInContent 0.6s ease 0.2s forwards;
 }
@@ -333,7 +320,7 @@ main {
     padding: 8px 16px;
     border-radius: 25px;
     font-size: 0.9rem;
-    color: #3a3939;
+    color: #252525;
     display: flex;
     align-items: center;
     gap: 5px;
@@ -341,7 +328,7 @@ main {
 }
 
 .feature-tag:hover {
-    background: linear-gradient(135deg, #fa7f52, #ff6b35, #ec4949);
+    background: linear-gradient(135deg, #ff6a4d, #ff4b2b);
     color: white;
     transform: translateY(-3px);
 }
@@ -360,7 +347,8 @@ main {
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    background: linear-gradient(135deg, #ff6b35, #ff1744);
+    /* background: linear-gradient(135deg, #ff6b35, #ff1744); */
+    background: linear-gradient(135deg, #d86a48 0%, #ec3030 100%);
     color: white;
     padding: 12px 30px;
     border-radius: 30px;
@@ -433,7 +421,7 @@ main {
 }
 
 .thumbnail.active {
-    border-color: var(--primary-color);
+    border-color: #d35833;
     opacity: 1;
     transform: scale(1.1);
 }
@@ -487,7 +475,7 @@ main {
 
     .slide img {
         width: 100%;
-        height: 60vh;
+        height: 65vh;
         object-fit: contain;
         background: #000;
     }
@@ -495,26 +483,26 @@ main {
     /* 🔥 THUMBNAILS ABOVE CONTENT */
     .thumbnail-container {
         position: static;
-        /* remove absolute */
         transform: none;
         justify-content: center;
         margin: 10px 0;
-        order: 2;
-        /* 👈 comes after image */
+    }
+
+    .thumbnail {
+        width: 60px;
+        height: 40px;
     }
 
     /* 🔥 CONTENT BELOW THUMBNAILS */
     .slide-content {
         width: 100%;
-        height: auto;
         padding: 1.2rem;
-        order: 3;
         text-align: center;
     }
 
     .slide-title {
         font-size: 1.6rem;
-        margin-bottom: 10px;
+        /* margin-bottom: 10px; */
     }
 
     .slide-desc {
@@ -531,7 +519,7 @@ main {
     /* 🔥 FEATURE TAGS CENTER */
     .project-features {
         justify-content: center;
-        margin-bottom: 15px;
+        /* margin-bottom: 15px; */
     }
 
     /* 🔥 BUTTON CENTER */
