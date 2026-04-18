@@ -1,0 +1,554 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+:root {
+    --primary-color: rgb(253, 93, 72);
+    --secondary-color: #e42f4d;
+    --accent-color: #f6703b;
+    --dark-bg: #201e1c;
+    --light-bg: #f8fafc;
+    --text-dark: #1f252c;
+    --text-light: #776355;
+    --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    --hover-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    --artical-bg: #12161f;
+}
+
+body {
+    line-height: 1.6;
+    color: var(--text-dark);
+    overflow-x: hidden;
+}
+
+.hero {
+    padding-top: 40px;
+    /* background-color: #faf6f49c; */
+    background: url(https://png.pngtree.com/thumb_back/fh260/background/20240929/pngtree-a-person-using-tablet-and-various-icons-of-digital-marketing-and-image_16271342.jpg);
+    /* background: url(https://img.freepik.com/free-vector/paper-style-dynamic-lines-background_23-2149008629.jpg?semt=ais_hybrid&w=740&q=80); */
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: rgb(5, 5, 5);
+    padding: 8rem 2rem 4rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+    animation: pulse 4s ease-in-out infinite;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 0.5;
+    }
+
+    50% {
+        transform: scale(1.1);
+        opacity: 0.3;
+    }
+}
+
+.hero-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    animation: fadeInUp 0.8s ease 0.2s both;
+
+}
+
+.hero p {
+    font-size: 1.27rem;
+    margin-bottom: 2rem;
+    /* opacity: 0.9; */
+    animation: fadeInUp 0.8s ease 0.2s both;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.cta-button {
+    display: inline-block;
+    text-decoration: none;
+    background: linear-gradient(135deg, #ff6b35, #ff1744);
+    padding: 0.8rem 1.4rem;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 500;
+    border-radius: 50px;
+    margin-bottom: 30px;
+}
+
+
+/* ----------------- Services section starts here ----------------  */
+
+.services {
+    padding: 4rem 2rem;
+    background: var(--light-bg);
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 3rem;
+    font-size: 2.5rem;
+    color: var(--accent-color);
+}
+
+.services-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.service-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: var(--card-shadow);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+}
+
+.service-card:hover::before {
+    transform: translateX(0);
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--hover-shadow);
+}
+
+.service-icon {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.service-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--text-dark);
+}
+
+.service-card p {
+    color: var(--text-light);
+}
+
+/* ----------------- Services Section ends here ----------------  */
+
+
+/* ----------------- Why Choose Us Section starts here ----------------  */
+.why-choose-us {
+    padding: 5rem 2rem;
+    background: white;
+}
+
+.why-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.why-content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--accent-color);
+}
+
+.why-content p {
+    color: var(--text-dark);
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+    font-weight: 400;
+}
+
+/* implementation-steps */
+.implementation-steps {
+    background: #f1f5f9;
+    padding: 2rem;
+    border-radius: 12px;
+    border-left: 4px solid var(--primary-color);
+}
+
+.step {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: slideIn 0.5s ease forwards;
+}
+
+.step:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.step:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.step:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.step:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+.step:nth-child(5) {
+    animation-delay: 0.5s;
+}
+
+/* Animation */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.step-icon {
+    background: var(--primary-color);
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1rem;
+    flex-shrink: 0;
+}
+
+.step-content h4 {
+    margin-bottom: 0.5rem;
+    color: var(--text-dark);
+}
+
+.step-content p {
+    color: var(--text-light);
+    font-size: 0.95rem;
+}
+
+/* ----------------- Why Choose Us Section ends here ----------------  */
+
+/* ----------------- Social Media Marketing Section starts here ----------------  */
+.social-marketing {
+    padding: 5rem 2rem;
+    background: var(--light-bg);
+}
+
+.social-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.social-content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--accent-color);
+}
+
+.social-content p {
+    color: var(--text-light);
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+    font-weight: 400;
+}
+
+/* Social  Benefits */
+.social-benefits {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: var(--card-shadow);
+}
+
+.benefit {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding: 0.6rem;
+    border-radius: 8px;
+    transition: background 0.3s ease;
+}
+
+.benefit:hover {
+    background: #f9f3f1;
+}
+
+.benefit i {
+    color: var(--primary-color);
+    margin-right: 1rem;
+    font-size: 1.25rem;
+}
+
+/* ----------------- Social Media Marketing Section ends here -----------------  */
+
+
+/* ----------------- Mobile App Development Section starts here ----------------  */
+.mobile-app {
+    padding: 5rem 2rem;
+    background: white;
+}
+
+.mobile-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.mobile-content {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.mobile-content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--accent-color);
+}
+
+.mobile-content p {
+    color: var(--text-light);
+    font-size: 1.1rem;
+    max-width: 800px;
+    font-weight: 400;
+    margin: 0 auto;
+}
+
+/* App  Showcase */
+.app-showcase {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.app-card {
+    background: var(--light-bg);
+    padding: 2rem;
+    border-radius: 12px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.app-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--hover-shadow);
+}
+
+.app-icon {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.app-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--text-dark);
+}
+
+.app-card p {
+    /* color: var(--text-light); */
+    font-weight: 400;
+    margin-bottom: 1rem;
+}
+
+/* ----------------- Mobile App Development Section ends here ----------------  */
+
+/* artical css start */
+
+.article {
+    height: auto;
+    /* border: 4px solid rgb(209, 76, 76); */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 100px;
+}
+
+.AI-Machine,
+.data-Engineering,
+.blockchain,
+.platform-Engineering,
+.app-development,
+.managed-services {
+    height: 452px;
+    width: 97%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    border-radius: 20px;
+    background-color: var(--artical-bg);
+    position: sticky;
+}
+
+.artical-content {
+    display: flex;
+    flex-direction: column;
+    padding: 30px 0px 0px 60px;
+    justify-content: center;
+    gap: 20px;
+    color: var(--light-bg);
+}
+
+.artical-content h2 {
+    font-size: 2.1em;
+    width: 300px;
+    font-weight: 500;
+}
+
+.artical-content p {
+    font-weight: 100;
+    font-size: 15px;
+    padding-right: 90px;
+    word-spacing: 1px;
+    line-height: 23px;
+}
+
+.artical-image img {
+    height: 450px;
+    width: 600px;
+    border-radius: 20px;
+}
+
+.AI-Machine {
+    top: 0px;
+    left: 0px;
+    z-index: 1;
+}
+
+.data-Engineering {
+    top: 15px;
+    left: 0px;
+    z-index: 2;
+}
+
+.blockchain {
+    top: 30px;
+    left: 0px;
+    z-index: 3;
+}
+
+.platform-Engineering {
+    top: 45px;
+    left: 0px;
+    z-index: 4;
+}
+
+.app-development {
+    top: 60px;
+    left: 0px;
+    z-index: 5;
+}
+
+.managed-services {
+    top: 75px;
+    left: 0px;
+    z-index: 6;
+}
+
+/* artical css end */
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero {
+        background-size: contain;
+        padding-top: 20px;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    .why-container,
+    .social-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .AI-Machine,
+    .data-Engineering,
+    .blockchain,
+    .platform-Engineering,
+    .app-development,
+    .managed-services {
+        height: 652px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .artical-image img {
+        margin-top: 40px;
+        height: 350px;
+        width: 629px;
+        margin-left: 1px;
+    }
+
+}
