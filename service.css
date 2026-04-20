@@ -25,16 +25,29 @@ body {
 }
 
 .hero {
-    padding-top: 40px;
-    /* background-color: #faf6f49c; */
-    background: url(https://png.pngtree.com/thumb_back/fh260/background/20240929/pngtree-a-person-using-tablet-and-various-icons-of-digital-marketing-and-image_16271342.jpg);
-    /* background: url(https://img.freepik.com/free-vector/paper-style-dynamic-lines-background_23-2149008629.jpg?semt=ais_hybrid&w=740&q=80); */
-    background-repeat: no-repeat;
-    background-size: cover;
-    color: rgb(5, 5, 5);
-    padding: 8rem 2rem 4rem;
+    width: 100%;
+    height: 60vh;
+    /* background: linear-gradient(rgba(73, 105, 100, 0.3), rgba(134, 121, 92, 0.3)); */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 5%;
+    color: var(--light-bg);
     position: relative;
     overflow: hidden;
+}
+
+.bg-video {
+    position: absolute;
+    width: 100%;
+    z-index: -1;
+}
+
+@media (max-aspect-ratio: 16/9) {
+    .back-video {
+        width: auto;
+        height: 100%;
+    }
 }
 
 .hero::before {
@@ -79,6 +92,7 @@ body {
 
 .hero p {
     font-size: 1.27rem;
+    width: 800px;
     margin-bottom: 2rem;
     /* opacity: 0.9; */
     animation: fadeInUp 0.8s ease 0.2s both;
@@ -467,6 +481,7 @@ body {
     height: 450px;
     width: 600px;
     border-radius: 20px;
+    object-fit: cover;
 }
 
 .AI-Machine {
