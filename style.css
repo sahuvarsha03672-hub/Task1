@@ -17,7 +17,7 @@ body {
     /* Clean modern dark background for page content */
 }
 
-/* nav bar css starts*/
+/* ----------------------------------------------- Navbar CSS STARTS HERE -------------------------------------------------------*/
 .navbar-custom {
     display: flex;
     align-items: center;
@@ -92,22 +92,6 @@ body {
     margin-left: 2rem;
 }
 
-/* Background layer */
-/* .nav-link-custom::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: -100%;
-    width: 100%;
-    height: 100%;
-    background-color: #272626;
-    
-    z-index: 0;
-    transition: bottom 0.2s ease 0.3s;
-} */
-/* 👇 Delay added here */
-
-/* Background moves after 1 second */
 .nav-link-custom:hover::before {
     bottom: 0;
 }
@@ -236,17 +220,17 @@ body {
     color: #ff6a4d;
 }
 
-/* nav bar css ends*/
+/* ------------------------------------------------- Navbar CSS ENDS HERE --------------------------------------------------------*/
 
 
-/* --------------------------------------------------------------------------------------------- */
+/* ------------------------------------------------- Mobile Menu CSS STARTS HERE ------------------------------------------------- */
 
 .mobile-menu {
     position: absolute;
     top: 100%;
     left: 0;
     width: 100%;
-    background-color: rgba(10, 10, 12, 0.488);
+    background-color: rgba(10, 10, 12, 0.87);
     backdrop-filter: blur(12px);
     display: flex;
     flex-direction: column;
@@ -323,7 +307,7 @@ body {
 }
 
 .mobile-menu a:hover {
-    color: #4f46e5;
+    color: #ff6a4d;
     /* Equivalent to hover:text-indigo-600 */
 }
 
@@ -389,13 +373,15 @@ body {
         opacity: 1;
         transform: none;
         box-shadow: none;
-        background: transparent;
+        /* background: white; */
+        /* color: black; */
+        /* background: transparent; */
         border: none;
         backdrop-filter: none;
         -webkit-backdrop-filter: none;
         padding: 0;
         margin-top: 10px;
-        min-width: 100%;
+        min-width: 40%;
         display: none;
         transition: none;
     }
@@ -560,21 +546,6 @@ body {
     }
 }
 
-/* Scale animation */
-.fade-scale {
-    opacity: 0;
-    transform: scale(0.8);
-    animation: scaleIn 1s ease forwards;
-    animation-delay: 0.5s;
-}
-
-@keyframes scaleIn {
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
-
 /* -------------- */
 .group-logo {
     position: relative;
@@ -644,8 +615,6 @@ body {
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
     object-fit: contain;
 }
-
-/* Removed hover effect for orbiting logos as requested */
 
 /* Different positions perfectly spaced for 6 items in 12s */
 .group-logo img:nth-child(2) {
