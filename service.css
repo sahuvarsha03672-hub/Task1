@@ -1,10 +1,17 @@
+/* ---------------- RESET ---------------- */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
+body {
+    font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* ---------------- VARIABLES ---------------- */
 :root {
     --primary-color: rgb(253, 93, 72);
     --secondary-color: #e42f4d;
@@ -13,88 +20,52 @@
     --light-bg: #f8fafc;
     --text-dark: #1f252c;
     --text-light: #776355;
-    --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-    --hover-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
     --artical-bg: #12161f;
+
+    --card-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    --hover-shadow: 0 15px 25px rgba(0, 0, 0, 0.15);
 }
 
-body {
-    line-height: 1.6;
-    color: var(--text-dark);
-    overflow-x: hidden;
-}
+/* ----------------- Hero section starts here ----------------  */
 
 .hero {
-    width: 100%;
-    height: 60vh;
-    /* background: linear-gradient(rgba(73, 105, 100, 0.3), rgba(134, 121, 92, 0.3)); */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0 5%;
-    color: var(--light-bg);
     position: relative;
+    height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
     overflow: hidden;
+    padding: 0 20px;
 }
 
 .bg-video {
     position: absolute;
+    inset: 0;
     width: 100%;
-    z-index: -1;
+    height: 100%;
+    object-fit: cover;
+    z-index: -2;
 }
 
-@media (max-aspect-ratio: 16/9) {
-    .back-video {
-        width: auto;
-        height: 100%;
-    }
-}
-
-.hero::before {
+.hero::after {
     content: '';
     position: absolute;
-    top: -50%;
-    right: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
-    animation: pulse 4s ease-in-out infinite;
-}
-
-@keyframes pulse {
-
-    0%,
-    100% {
-        transform: scale(1);
-        opacity: 0.5;
-    }
-
-    50% {
-        transform: scale(1.1);
-        opacity: 0.3;
-    }
-}
-
-.hero-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    text-align: center;
-    position: relative;
-    z-index: 1;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.24);
+    z-index: -1;
 }
 
 .hero h1 {
     font-size: 3rem;
-    margin-bottom: 1rem;
     animation: fadeInUp 0.8s ease 0.2s both;
-
 }
 
 .hero p {
-    font-size: 1.27rem;
-    width: 800px;
-    margin-bottom: 2rem;
-    /* opacity: 0.9; */
+    max-width: 800px;
+    margin: 15px auto;
+    font-size: 1.2rem;
     animation: fadeInUp 0.8s ease 0.2s both;
 }
 
@@ -110,52 +81,59 @@ body {
     }
 }
 
+
 .cta-button {
     display: inline-block;
-    text-decoration: none;
+    /* background: linear-gradient(135deg, var(--primary), var(--secondary)); */
     background: linear-gradient(135deg, #ff6b35, #ff1744);
-    padding: 0.8rem 1.4rem;
-    color: white;
-    font-size: 1.1rem;
-    font-weight: 500;
+    padding: 12px 24px;
     border-radius: 50px;
-    margin-bottom: 30px;
+    color: white;
+    text-decoration: none;
+    transition: 0.3s;
 }
+
+.cta-button:hover {
+    transform: scale(1.05);
+}
+
+/* ----------------- Hero section ends here ----------------  */
 
 
 /* ----------------- Services section starts here ----------------  */
 
 .services {
-    padding: 4rem 2rem;
+    padding: 80px 20px;
     background: var(--light-bg);
 }
 
 .section-title {
     text-align: center;
-    margin-bottom: 3rem;
     font-size: 2.5rem;
     color: var(--accent-color);
+    margin-bottom: 50px;
 }
 
 .services-grid {
-    max-width: 1200px;
-    margin: 0 auto;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    max-width: 1200px;
+    margin: auto;
 }
 
 .service-card {
-    background: white;
-    padding: 2rem;
-    border-radius: 12px;
-    box-shadow: var(--card-shadow);
-    transition: all 0.3s ease;
-    cursor: pointer;
     position: relative;
+    background: #fff;
+    padding: 30px;
+    border-radius: 14px;
+    box-shadow: var(--card-shadow);
+    transition: all 0.35s ease;
+    cursor: pointer;
     overflow: hidden;
 }
 
+/* TOP GRADIENT LINE */
 .service-card::before {
     content: '';
     position: absolute;
@@ -165,28 +143,36 @@ body {
     height: 4px;
     background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
     transform: translateX(-100%);
-    transition: transform 0.3s ease;
+    transition: transform 0.4s ease;
 }
 
+/* HOVER EFFECT */
 .service-card:hover::before {
     transform: translateX(0);
 }
 
 .service-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-10px) scale(1.02);
     box-shadow: var(--hover-shadow);
 }
 
+/* ICON ANIMATION */
 .service-icon {
-    font-size: 3rem;
+    font-size: 48px;
     color: var(--primary-color);
-    margin-bottom: 1rem;
+    margin-bottom: 15px;
+    transition: 0.3s;
+}
+
+.service-card:hover .service-icon {
+    transform: rotate(4deg) scale(1.1);
+    color: var(--secondary-color);
 }
 
 .service-card h3 {
     font-size: 1.5rem;
-    margin-bottom: 1rem;
     color: var(--text-dark);
+    margin-bottom: 13px;
 }
 
 .service-card p {
@@ -198,28 +184,27 @@ body {
 
 /* ----------------- Why Choose Us Section starts here ----------------  */
 .why-choose-us {
-    padding: 5rem 2rem;
+    padding: 80px 20px;
     background: white;
 }
 
 .why-container {
-    max-width: 1200px;
-    margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 4rem;
+    gap: 50px;
+    max-width: 1200px;
+    margin: auto;
     align-items: center;
 }
 
 .why-content h2 {
-    font-size: 2.5rem;
-    margin-bottom: 1.5rem;
+    font-size: 2.3rem;
+    margin-bottom: 1rem;
     color: var(--accent-color);
 }
 
 .why-content p {
     color: var(--text-dark);
-    margin-bottom: 2rem;
     font-size: 1.1rem;
     font-weight: 400;
 }
@@ -276,12 +261,8 @@ body {
 .step-icon {
     background: var(--primary-color);
     color: white;
-    width: 40px;
-    height: 40px;
+    padding: 10px;
     border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     margin-right: 1rem;
     flex-shrink: 0;
 }
@@ -298,24 +279,24 @@ body {
 
 /* ----------------- Why Choose Us Section ends here ----------------  */
 
+
 /* ----------------- Social Media Marketing Section starts here ----------------  */
 .social-marketing {
-    padding: 5rem 2rem;
+    padding: 80px 20px;
     background: var(--light-bg);
 }
 
 .social-container {
-    max-width: 1200px;
-    margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    align-items: center;
+    gap: 50px;
+    max-width: 1200px;
+    margin: auto;
 }
 
 .social-content h2 {
     font-size: 2.5rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.2rem;
     color: var(--accent-color);
 }
 
@@ -329,15 +310,15 @@ body {
 /* Social  Benefits */
 .social-benefits {
     background: white;
-    padding: 2rem;
-    border-radius: 12px;
+    padding: 20px;
+    border-radius: 10px;
     box-shadow: var(--card-shadow);
 }
 
 .benefit {
     display: flex;
     align-items: center;
-    margin-bottom: 1rem;
+    margin-bottom: 15px;
     padding: 0.6rem;
     border-radius: 8px;
     transition: background 0.3s ease;
@@ -348,33 +329,30 @@ body {
 }
 
 .benefit i {
-    color: var(--primary-color);
     margin-right: 1rem;
-    font-size: 1.25rem;
+    color: var(--primary-color);
+    font-size: 1.35rem;
 }
 
 /* ----------------- Social Media Marketing Section ends here -----------------  */
 
 
-/* ----------------- Mobile App Development Section starts here ----------------  */
-.mobile-app {
-    padding: 5rem 2rem;
-    background: white;
-}
 
-.mobile-container {
-    max-width: 1200px;
-    margin: 0 auto;
+/* ----------------- Mobile App Development Section starts here ----------------  */
+
+.mobile-app {
+    padding: 80px 20px;
+    background: white;
 }
 
 .mobile-content {
     text-align: center;
-    margin-bottom: 3rem;
+    margin-bottom: 45px;
 }
 
 .mobile-content h2 {
     font-size: 2.5rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.3rem;
     color: var(--accent-color);
 }
 
@@ -389,28 +367,27 @@ body {
 /* App  Showcase */
 .app-showcase {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    margin-bottom: 3rem;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
 }
 
 .app-card {
     background: var(--light-bg);
-    padding: 2rem;
-    border-radius: 12px;
+    padding: 25px;
     text-align: center;
+    border-radius: 12px;
     transition: all 0.3s ease;
 }
 
 .app-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-8px);
     box-shadow: var(--hover-shadow);
 }
 
 .app-icon {
-    font-size: 3rem;
+    font-size: 3.5rem;
     color: var(--primary-color);
-    margin-bottom: 1rem;
+    margin-bottom: 0.7rem;
 }
 
 .app-card h3 {
@@ -425,17 +402,13 @@ body {
     margin-bottom: 1rem;
 }
 
-/* ----------------- Mobile App Development Section ends here ----------------  */
-
-/* artical css start */
-
+/* ---------------- ARTICLE ---------------- */
 .article {
-    height: auto;
-    /* border: 4px solid rgb(209, 76, 76); */
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 80px;
+    /* gap: 1px; */
+    padding: 40px 20px;
 }
 
 .AI-Machine,
@@ -444,147 +417,365 @@ body {
 .platform-Engineering,
 .app-development,
 .managed-services {
-    height: 452px;
-    width: 97%;
+    height: 480px;
     display: flex;
-    flex-direction: row;
-    justify-content: center;
-    border-radius: 20px;
-    background-color: var(--artical-bg);
+    background: var(--artical-bg);
+    border-radius: 15px;
     position: sticky;
-}
-
-.artical-content {
-    display: flex;
-    flex-direction: column;
-    padding: 30px 0px 0px 60px;
-    justify-content: center;
-    gap: 20px;
-    color: var(--light-bg);
-}
-
-.artical-content h2 {
-    font-size: 2.1em;
-    width: 300px;
-    font-weight: 500;
-}
-
-.artical-content p {
-    font-weight: 100;
-    font-size: 15px;
-    padding-right: 90px;
-    word-spacing: 1px;
-    line-height: 23px;
-}
-
-.artical-image img {
-    height: 450px;
-    width: 600px;
-    border-radius: 20px;
-    object-fit: cover;
+    overflow: hidden;
+    gap: 40px;
 }
 
 .AI-Machine {
-    top: 0px;
+    top: 10px;
     left: 0px;
     z-index: 1;
 }
 
 .data-Engineering {
-    top: 15px;
+    top: 20px;
     left: 0px;
     z-index: 2;
 }
 
 .blockchain {
-    top: 30px;
+    top: 40px;
     left: 0px;
     z-index: 3;
 }
 
 .platform-Engineering {
-    top: 45px;
+    top: 60px;
     left: 0px;
     z-index: 4;
 }
 
 .app-development {
-    top: 60px;
+    top: 80px;
     left: 0px;
     z-index: 5;
 }
 
 .managed-services {
-    top: 75px;
+    top: 100px;
     left: 0px;
     z-index: 6;
 }
 
-/* artical css end */
+.artical-content {
+    flex: 1;
+    padding: 40px 15px 0px 45px;
+    justify-content: center;
+    color: var(--light-bg);
+}
 
+.artical-content h2 {
+    font-size: 2.1em;
+    font-weight: 500;
+}
 
-/* Responsive Design */
-@media (max-width: 768px) {
+.artical-content p {
+    font-weight: 100;
+    font-size: 17px;
+    padding-top: 15px;
+    /* padding-right: 20px; */
+}
+
+.artical-image {
+    flex: 1;
+}
+
+.artical-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* ---------------- RESPONSIVE ---------------- */
+
+/* 2560px */
+@media (min-width: 2000px) {
     .hero {
-        background-size: contain;
+        height: 60vh;
+        padding: 0px 0px;
     }
 
     .hero h1 {
-        font-size: 2rem;
+        font-size: 5rem;
     }
 
     .hero p {
-        width: 100%;
+        max-width: 1300px;
+        margin: 20px auto;
+        font-size: 2.4rem;
+    }
+
+    .cta-button {
+        padding: 22px 40px;
+        font-size: 2.2rem;
+        margin-top: 20px;
+    }
+
+    .section-title {
+        font-size: 4rem;
+        margin-bottom: 60px;
+    }
+
+    .services-grid {
+        gap: 40px;
+        max-width: 2200px;
+    }
+
+    .service-card {
+        padding: 30px 30px 30px 50px;
+    }
+
+    .service-card::before {
+        height: 7px;
+    }
+
+    .service-icon {
+        font-size: 5rem;
+    }
+
+    .service-card h3 {
+        font-size: 3.5rem;
+    }
+
+    .service-card p {
+        font-size: 2.5rem;
+        margin-bottom: 25px;
+    }
+
+    .why-container {
+        max-width: 2200px;
+    }
+
+    .why-content h2 {
+        font-size: 4rem;
+    }
+
+    .why-content p {
+        font-size: 2.1rem;
+    }
+
+    .implementation-steps {
+        padding: 2.5rem;
+        border-left: 7px solid var(--primary-color);
+    }
+
+    .step {
+        margin-bottom: 2rem;
+        padding: 20px 10px;
+    }
+
+    .step-icon {
+        padding: 30px;
+        border-radius: 50%;
+        margin-right: 1.5rem;
+    }
+
+    .step-icon i {
+        font-size: 2rem;
+    }
+
+    .step-content h4 {
+        margin-bottom: 0.5rem;
+        font-size: 2rem;
+    }
+
+    .step-content p {
+        font-size: 1.5rem;
+    }
+
+    .social-container {
+        max-width: 2200px;
+    }
+
+    .social-content h2 {
+        font-size: 4rem;
+    }
+
+    .social-content p {
+        font-size: 2.1rem;
+    }
+
+    .social-benefits {
+        padding: 30px;
+    }
+
+    .benefit {
+        padding: 1.2rem;
+    }
+
+    .benefit i {
+        margin-right: 2rem;
+        font-size: 3rem;
+    }
+
+    .benefit span {
+        font-size: 2.1rem;
+    }
+
+    .mobile-content h2 {
+        font-size: 4.2rem;
+    }
+
+    .mobile-content p {
+        font-size: 2.5rem;
+        max-width: 1500px;
+    }
+
+    .app-icon {
+        font-size: 5rem;
+    }
+
+    .app-card h3 {
+        font-size: 3.2rem;
+    }
+
+    .app-card p {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+        padding: 0px 25px;
+    }
+
+    .AI-Machine,
+    .data-Engineering,
+    .blockchain,
+    .platform-Engineering,
+    .app-development,
+    .managed-services {
+        height: 1000px;
+    }
+
+    .artical-content {
+        padding: 100px 35px 0px 90px;
+    }
+
+    .artical-content h2 {
+        font-size: 4.1em;
+    }
+
+    .artical-content p {
+        font-size: 2.7rem;
+    }
+}
+
+/* 1440px */
+@media (max-width: 1440px) {
+    .services-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* 1024px */
+@media (max-width: 1024px) {
+    .hero {
+        height: 55vh;
+        padding: 0px 0px;
+    }
+
+    .hero h1 {
+        font-size: 4.5rem;
+    }
+
+    .hero p {
+        max-width: 900px;
+        margin: 20px auto;
+        font-size: 2.2rem;
+    }
+
+    .cta-button {
+        padding: 22px 40px;
+        font-size: 2.2rem;
+        margin-top: 20px;
+    }
+
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
 
     .why-container,
     .social-container {
         grid-template-columns: 1fr;
-        gap: 2rem;
     }
 
-    .section-title {
+    .app-showcase {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* 768px */
+@media (max-width: 768px) {
+    .hero {
+        height: 50vh;
+        padding: 0px 0px;
+    }
+
+    .hero h1 {
+        font-size: 4rem;
+    }
+
+    .hero p {
+        max-width: 700px;
+        margin: 20px auto;
         font-size: 2rem;
     }
 
+    .cta-button {
+        padding: 18px 30px;
+        font-size: 2rem;
+        margin-top: 20px;
+    }
+
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .app-showcase {
+        grid-template-columns: 1fr;
+    }
+
     .AI-Machine,
     .data-Engineering,
     .blockchain,
     .platform-Engineering,
     .app-development,
     .managed-services {
-        height: 652px;
-        display: flex;
         flex-direction: column;
+        height: 1100px;
+    }
+
+    .artical-content {
+        padding: 40px 35px 0px 50px;
     }
 
     .artical-content h2 {
-        width: 80%;
+        font-size: 3.1em;
     }
 
-    .artical-image img {
-        margin-top: 40px;
-        height: 397px;
-        width: 99.8%;
-        margin-left: 1px;
+    .artical-content p {
+        font-size: 1.9rem;
     }
-
 }
 
-
+/* 425px */
 @media (max-width: 425px) {
-    .hero {
-        background-size: contain;
-        padding: 0;
-    }
-
     .hero h1 {
-        padding-top: 20px;
+        font-size: 2.5rem;
     }
 
     .hero p {
-        font-size: 1.1rem;
-        width: 100%;
+        max-width: 300px;
+        margin: 20px auto;
+        font-size: 1.6rem;
+    }
+
+    .cta-button {
+        padding: 12px 20px;
+        font-size: 1.5rem;
+        margin-top: 20px;
     }
 
     .AI-Machine,
@@ -593,106 +784,50 @@ body {
     .platform-Engineering,
     .app-development,
     .managed-services {
-        height: 752px;
-        display: flex;
-        flex-direction: column;
+        height: 1500px;
     }
 
-    .artical-image img {
-        height: 336px;
-        width: 412px;
+    .artical-content {
+        padding: 40px 25px 0px 45px;
     }
 
+    .artical-content h2 {
+        font-size: 2.7em;
+    }
+
+    .artical-content p {
+        font-size: 1.7rem;
+    }
+
+    .AI-Machine {
+        top: 80px;
+    }
+
+    .data-Engineering {
+        top: 140px;
+    }
+
+    .blockchain {
+        top: 180px;
+    }
+
+    .platform-Engineering {
+        top: 240px;
+    }
+
+    .app-development {
+        top: 280px;
+    }
+
+    .managed-services {
+        top: 320px;
+    }
 }
 
+/* 375px */
 @media (max-width: 375px) {
-
-    .hero {
-        width: 100%;
-        height: 60vh;
-        border: 2px solid red;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 0px;
-    }
-
-    .bg-video {
-        width: 100%;
-        /* max-height: 100%; */
-        /* height: 900px; */
-    }
-
-    .hero-container {
-        max-width: 1200px;
-        margin: 0px 0px;
-        padding: 0px 0px;
-    }
-
     .hero h1 {
-        padding-top: 90px;
-    }
-
-    .hero p {
-        font-size: 1.1rem;
-        /* width: 85%; */
-    }
-
-    .services {
-        width: 100%;
-        padding: 5rem 0.2rem 5rem 1.4rem;
-        margin-left: 0px;
-    }
-
-    .services-grid {
-        margin: 0 auto;
-    }
-
-    .service-card {
-        padding: 2rem;
-        margin-right: 15px;
-    }
-
-    .why-choose-us {
-        padding: 5rem 0.7rem 5rem 1.4rem;
-    }
-
-    .social-marketing {
-        width: 100%;
-        padding: 5rem 0.2rem 5rem 1.4rem;
-        margin-left: 0px;
-    }
-
-    .social-container {
-        gap: 3rem;
-    }
-
-    .social-benefits {
-        margin-right: 15px;
-    }
-
-    .mobile-app {
-        padding: 5rem 1.6rem;
-    }
-
-    .article {
-        height: auto;
-        width: 100%;
-        border: none;
-    }
-
-    .artical-content {
-        padding: 25px 0px 0px 30px;
-    }
-
-    .artical-content h2 {
-        font-size: 1.8em;
-        width: 250px;
-    }
-
-    .artical-content p {
-        font-size: 18px;
-        padding-right: 15px;
+        font-size: 2.5rem;
     }
 
     .AI-Machine,
@@ -701,120 +836,24 @@ body {
     .platform-Engineering,
     .app-development,
     .managed-services {
-        height: 740px;
-        width: 100%;
-        display: flex;
-        flex-direction: column;
+        height: 1800px;
     }
 
-    .artical-image img {
-        height: 355px;
-        width: 374px;
+    .artical-content {
+        padding: 40px 25px 0px 45px;
     }
 }
 
+/* 320px */
 @media (max-width: 320px) {
-
-    .hero {
-        width: 100%;
-        height: 60vh;
-        border: 2px solid red;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 0px;
-    }
-
-    .bg-video {
-        width: 100%;
-        /* max-height: 100%; */
-        /* height: 900px; */
-    }
-
-    .hero-container {
-        max-width: 1200px;
-        margin: 0px 0px;
-        padding: 0px 0px;
-    }
-
     .hero h1 {
-        padding-top: 90px;
+        font-size: 2.2rem;
     }
 
     .hero p {
-        font-size: 1.1rem;
-        width: 95%;
-    }
-
-    .services {
-        width: 331px;
-        padding: 5rem 0.2rem 5rem 1.4rem;
-        margin-left: 0px;
-    }
-
-    .services-grid {
-        margin: 0 auto;
-    }
-
-    .service-card {
-        padding: 2rem;
-        margin-right: 15px;
-    }
-
-    .why-choose-us {
-        padding: 5rem 0.4rem 5rem 1.4rem;
-    }
-
-    .social-marketing {
-        width: 331px;
-        padding: 5rem 0.2rem 5rem 1.4rem;
-        margin-left: 0px;
-    }
-
-    .social-container {
-        gap: 3rem;
-    }
-
-    .social-benefits {
-        margin-right: 15px;
-    }
-
-    .benefit {
-        width: 100%;
-    }
-
-    .social-benefits span {
-        width: 100%;
-    }
-
-    .mobile-app {
-        padding: 5rem 1.6rem;
-    }
-
-    .app-card {
-        padding: 2rem;
-        margin-right: 20px;
-    }
-
-    .article {
-        height: auto;
-        width: 332px;
-        margin-bottom: 80px;
-        border: none;
-    }
-
-    .artical-content {
-        padding: 25px 0px 0px 30px;
-    }
-
-    .artical-content h2 {
-        font-size: 1.8em;
-        width: 250px;
-    }
-
-    .artical-content p {
-        font-size: 18px;
-        padding-right: 15px;
+        max-width: 250px;
+        margin: 20px auto;
+        font-size: 1.6rem;
     }
 
     .AI-Machine,
@@ -823,14 +862,11 @@ body {
     .platform-Engineering,
     .app-development,
     .managed-services {
-        height: 760px;
+        height: 1800px;
         width: 100%;
-        display: flex;
-        flex-direction: column;
     }
 
-    .artical-image img {
-        height: 313px;
-        width: 331px;
+    .artical-content {
+        padding: 30px 20px 0px 25px;
     }
 }
